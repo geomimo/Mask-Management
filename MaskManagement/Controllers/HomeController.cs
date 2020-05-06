@@ -20,13 +20,10 @@ namespace MaskManagement.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var model = new List<PurchaseVM>();
+            return View(model);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
