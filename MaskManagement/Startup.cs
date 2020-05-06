@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MaskManagement.Contracts;
 using MaskManagement.Data;
+using MaskManagement.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +34,12 @@ namespace MaskManagement
             services.AddDbContext<MaskManagementContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddSingleton<IMaskRepository, MaskRepository>();
+            services.AddSingleton<IPurchaseRepository, PurchaseRepository>();
+            services.AddSingleton<ICustomerRepository, CustomerRepository>();
+            services.AddSingleton<IPurchasedMasksRepository, PurchasedMasksRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
