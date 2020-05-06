@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "A3nOT4pYQG8wIvB9nIt/0PDBfa/Us3ZRfCFpbBmYl6124ic28h6OoSrCrnNX/y7U2BtJjKh7xOdLijVB2NwdJQ==",
+  "dgSpecHash": "cTSGJgbQoPVJAipsbX25UJqBjEds5YKPRYTLUNghtbfn6DiHaPHgzxhZORPmQk/yg5gYdFPcHji56Vp1VipHng==",
   "success": true,
   "projectFilePath": "C:\\Users\\GeoMimo\\source\\repos\\MaskManagement\\MaskManagement\\MaskManagement.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\GeoMimo\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
+    "C:\\Users\\GeoMimo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\GeoMimo\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\GeoMimo\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.1.3\\microsoft.aspnetcore.mvc.razor.extensions.3.1.3.nupkg.sha512",
     "C:\\Users\\GeoMimo\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.1.3\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.1.3.nupkg.sha512",

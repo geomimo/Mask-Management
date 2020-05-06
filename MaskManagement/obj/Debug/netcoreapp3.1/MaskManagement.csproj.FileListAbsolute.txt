@@ -138,9 +138,6 @@ C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\bin\Debug\netcoreapp
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\Razor\Views\Masks\Index.cshtml.g.cs
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\Razor\Views\Masks\Create.cshtml.g.cs
-C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\MaskManagement.csproj.CoreCompileInputs.cache
-C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\MaskManagement.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\MaskManagement.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Antiforgery.dll
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Authentication.Cookies.dll
@@ -416,3 +413,4 @@ C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\bin\Debug\netcoreapp
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\Razor\Views\Masks\Details.cshtml.g.cs
+C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\bin\Debug\netcoreapp3.1\AutoMapper.dll
