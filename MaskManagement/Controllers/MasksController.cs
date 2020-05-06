@@ -58,8 +58,7 @@ namespace MaskManagement.Controllers
                 // Save mask
             }
 
-            // Redirect to details.
-            return View();
+            return RedirectToAction("Details");
         }
 
         // GET: Masks/Edit/5
