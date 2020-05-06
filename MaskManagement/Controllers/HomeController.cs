@@ -20,11 +20,16 @@ namespace MaskManagement.Controllers
 
         public IActionResult Index()
         {
-            var model = new List<PurchaseVM>();
+            var model = new List<PurchaseDetailsVM>();
             return View(model);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
 
+       
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
