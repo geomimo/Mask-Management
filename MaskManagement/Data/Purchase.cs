@@ -10,6 +10,8 @@ namespace MaskManagement.Data
         public int Id { get; set; }
         public Customer Customer { get; set; }
         public DateTime Date { get; set; }
+        public PurchaseType PurchaseType { get; set; }
         public ICollection<PurchasedMasks> Masks { get; set; }
+        
     }
 }

@@ -35,10 +35,10 @@ namespace MaskManagement
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddSingleton<IMaskRepository, MaskRepository>();
-            services.AddSingleton<IPurchaseRepository, PurchaseRepository>();
-            services.AddSingleton<ICustomerRepository, CustomerRepository>();
-            services.AddSingleton<IPurchasedMasksRepository, PurchasedMasksRepository>();
+            services.AddScoped<IMaskRepository, MaskRepository>();
+            services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IPurchasedMasksRepository, PurchasedMasksRepository>();
 
         }
 

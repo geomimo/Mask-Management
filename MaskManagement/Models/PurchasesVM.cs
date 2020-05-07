@@ -29,7 +29,9 @@ namespace MaskManagement.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public PurchaseType PurchaseType { get; set; }
         public ICollection<PurchasedMasks> SelectedMasks { get; set; }
+
     }
 
 
