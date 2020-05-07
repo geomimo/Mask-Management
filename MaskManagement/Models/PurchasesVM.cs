@@ -18,7 +18,7 @@ namespace MaskManagement.Models
         [Display(Name = "Purchase Type")]
         public PurchaseType PurchaseType { get; set; }
 
-        public decimal Price { get; set; }
+        public float TotalPrice { get; set; }
         public DateTime Date { get; set; }
 
     }
