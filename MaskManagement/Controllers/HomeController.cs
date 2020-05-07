@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MaskManagement.Models;
 using MaskManagement.Contracts;
+using AutoMapper;
 
 namespace MaskManagement.Controllers
 {
@@ -14,17 +15,20 @@ namespace MaskManagement.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IPurchaseRepository _repo;
+        private readonly IMapper _mapper;
 
 
-        public HomeController(ILogger<HomeController> logger, IPurchaseRepository repo)
+        public HomeController(ILogger<HomeController> logger, IPurchaseRepository repo, IMapper mapper)
         {
             _logger = logger;
             _repo = repo;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
-            var model = new List<PurchaseDetailsVM>();
+            var purchases = _repo.FindAll().ToList();
+            var model = _mapper.Map<PurchaseDetailsVM>(purchases);
             return View(model);
         }
 

@@ -16,6 +16,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Globalization;
+using AutoMapper;
+using MaskManagement.Mappings;
 
 namespace MaskManagement
 {
@@ -42,6 +44,8 @@ namespace MaskManagement
             services.AddScoped<IPurchaseRepository, PurchaseRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IPurchasedMasksRepository, PurchasedMasksRepository>();
+
+            services.AddAutoMapper(typeof(Maps));
 
         }
 

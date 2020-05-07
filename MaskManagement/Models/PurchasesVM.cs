@@ -18,6 +18,7 @@ namespace MaskManagement.Models
         [Display(Name = "Purchase Type")]
         public PurchaseType PurchaseType { get; set; }
 
+        [Display(Name = "Total Price")]
         public float TotalPrice { get; set; }
         public DateTime Date { get; set; }
 
@@ -27,9 +28,16 @@ namespace MaskManagement.Models
     //TODO: Complete this
     public class PurchaseCreateVM 
     {
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+        [Display(Name = "Purchase Type")]
         public PurchaseType PurchaseType { get; set; }
+       
+        [Display(Name = "Masks")]
         public ICollection<PurchasedMasks> SelectedMasks { get; set; }
 
     }
