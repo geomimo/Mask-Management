@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using AutoMapper;
+using MaskManagement.Contracts;
 using MaskManagement.Data;
 using MaskManagement.Models;
 using Microsoft.AspNetCore.Hosting;
@@ -15,18 +18,24 @@ namespace MaskManagement.Controllers
     public class MasksController : Controller
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
+        private readonly IMaskRepository _repo;
+        private readonly IMapper _mapper;
 
-        public MasksController(IWebHostEnvironment hostingEnvironment)
+
+
+        public MasksController(IWebHostEnvironment hostingEnvironment, IMaskRepository repo, IMapper mapper)
         {
             _hostingEnvironment = hostingEnvironment;
+            _repo = repo;
+            _mapper = mapper;
         }
 
 
         // GET: Masks
         public ActionResult Index()
         {
-
-            var model = new List<MaskVM>();
+            var masks = _repo.FindAll().ToList();
+            var model = _mapper.Map<List<MaskVM>>(masks);
             return View(model);
         }
 
@@ -45,37 +54,47 @@ namespace MaskManagement.Controllers
             //TODO: Create a service for upload
             if (ModelState.IsValid)
             {
-                string uniqueFileName = null;
-                if(mask.Image != null)
+                if (mask.Image != null)
                 {
-                    // Generates wwwroot path.
-                    string uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "img");
-                    uniqueFileName = Guid.NewGuid().ToString() + "_" + mask.Image.FileName;
-                    string filePath = Path.Combine(uploadFolder, uniqueFileName);
-                    mask.Image.CopyTo(new FileStream(filePath, FileMode.Create));
+                    mask.ImagePath = UploadImage(mask.Image);
                 }
 
-                // Save mask
+                Mask newMask = _mapper.Map<Mask>(mask);
+
+                _repo.Create(newMask);
+
             }
 
-            return RedirectToAction("Details");
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Masks/Edit/5
         public ActionResult Edit(int id)
         {
-           
-            return View();
+            var mask = _repo.FindById(id);
+            var model = _mapper.Map<MaskVM>(mask);
+            return View(model);
         }
 
         // POST: Masks/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(MaskVM mask)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    if (mask.Image != null)
+                    {
+                        mask.ImagePath = UploadImage(mask.Image);
+                    }
+
+                    Mask newMask = _mapper.Map<Mask>(mask);
+
+                    _repo.Update(newMask);
+
+                }
 
                 return RedirectToAction(nameof(Index));
             }
@@ -88,17 +107,19 @@ namespace MaskManagement.Controllers
         // GET: Masks/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var mask = _repo.FindById(id);
+            var model = _mapper.Map<MaskVM>(mask);
+            return View(model);
         }
 
         // POST: Masks/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, string _)
         {
             try
             {
-                // TODO: Add delete logic here
+                _repo.Delete(_repo.FindById(id));
 
                 return RedirectToAction(nameof(Index));
             }
@@ -110,7 +131,18 @@ namespace MaskManagement.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var mask = _repo.FindById(id);
+            var model = _mapper.Map<MaskVM>(mask);
+            return View(model);
+        }
+
+        private string UploadImage(IFormFile file) 
+        {
+            string uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "img");
+            string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            string filePath = Path.Combine(uploadFolder, uniqueFileName);
+            file.CopyTo(new FileStream(filePath, FileMode.Create));
+            return Path.Combine("img", uniqueFileName);
         }
 
     }

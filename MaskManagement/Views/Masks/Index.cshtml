@@ -4,10 +4,10 @@
     ViewData["Title"] = "Masks";
 }
 
-<h1>Index</h1>
+<h1>Masks</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Add New</a>
 </p>
 <table class="table">
     <thead>
@@ -16,7 +16,7 @@
                 @Html.DisplayNameFor(model => model.FabricId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Image)
+                @Html.DisplayNameFor(model => model.ImagePath)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -31,15 +31,15 @@
                 @Html.DisplayFor(modelItem => item.FabricId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                <img src=@item.ImagePath class="img-thumbnail" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id}) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
 }

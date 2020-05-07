@@ -28,7 +28,7 @@ namespace MaskManagement.Controllers
         public IActionResult Index()
         {
             var purchases = _repo.FindAll().ToList();
-            var model = _mapper.Map<PurchaseDetailsVM>(purchases);
+            var model = _mapper.Map<List<PurchaseDetailsVM>>(purchases);
             return View(model);
         }
 

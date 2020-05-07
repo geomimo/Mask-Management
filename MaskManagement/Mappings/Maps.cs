@@ -14,6 +14,7 @@ namespace MaskManagement.Mappings
         {
 
             CreateMap<Mask, MaskVM>().ReverseMap();
+
             //CreateMap<Customer, CustomerVM>().ReverseMap();
             CreateMap<Purchase, PurchaseCreateVM>().ReverseMap();
             CreateMap<Purchase, PurchaseDetailsVM>().ReverseMap();
