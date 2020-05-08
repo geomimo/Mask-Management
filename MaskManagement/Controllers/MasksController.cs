@@ -109,27 +109,23 @@ namespace MaskManagement.Controllers
         // GET: Masks/Delete/5
         public ActionResult Delete(int id)
         {
-            var mask = _repo.FindById(id);
-            var model = _mapper.Map<MaskVM>(mask);
-            return View(model);
-        }
-
-        // POST: Masks/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, string _)
-        {
-            try
+            if (ModelState.IsValid)
             {
-                _repo.Delete(_repo.FindById(id));
+                var mask = _repo.FindById(id);
+                if(mask == null)
+                {
+                    return NotFound();
+                }
 
-                return RedirectToAction(nameof(Index));
+                if (!_repo.Delete(mask))
+                {
+                    return BadRequest();
+                }
             }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction(nameof(Index));
         }
+             
 
     }
 }
