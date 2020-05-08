@@ -68,18 +68,16 @@ namespace MaskManagement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PurchaseType")
                         .HasColumnType("int");
 
                     b.HasKey("PurchaseId");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Purchases");
                 });
@@ -100,13 +98,6 @@ namespace MaskManagement.Migrations
                     b.HasIndex("MaskId");
 
                     b.ToTable("PurchasedMasks");
-                });
-
-            modelBuilder.Entity("MaskManagement.Data.Purchase", b =>
-                {
-                    b.HasOne("MaskManagement.Data.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("MaskManagement.Data.PurchasedMasks", b =>

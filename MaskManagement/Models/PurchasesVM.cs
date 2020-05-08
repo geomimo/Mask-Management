@@ -29,11 +29,7 @@ namespace MaskManagement.Models
     //TODO: Complete this
     public class PurchaseCreateVM 
     {
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
+        public string Name { get; set; }
 
         [Display(Name = "Purchase Type")]
         public PurchaseType PurchaseType { get; set; }

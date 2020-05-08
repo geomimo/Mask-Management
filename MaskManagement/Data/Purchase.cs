@@ -11,11 +11,20 @@ namespace MaskManagement.Data
     {
         [Key]
         public int PurchaseId { get; set; }
-        public Customer Customer { get; set; }
+
+        public string Name { get; set; }
+
         public DateTime Date { get; set; } = DateTime.Now;
+
         public PurchaseType PurchaseType { get; set; }
+
+
         [ForeignKey("PurchasedMasksId")]
         public List<PurchasedMasks> Masks { get; set; }
-        
+
+        /*
+        [ForeignKey("CustomerId")]
+        public int? CustomerId { get; set; }
+        public Customer Customer { get; set; }*/
     }
 }

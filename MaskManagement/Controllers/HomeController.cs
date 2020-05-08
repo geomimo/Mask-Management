@@ -52,7 +52,6 @@ namespace MaskManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 Purchase newPurchase = _mapper.Map<Purchase>(purchase);
 
                 _prepo.Create(newPurchase);
