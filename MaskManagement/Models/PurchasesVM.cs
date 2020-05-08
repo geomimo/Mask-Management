@@ -10,6 +10,7 @@ namespace MaskManagement.Models
 {
     public class PurchaseDetailsVM
     {
+        public int Id { get; set; }
         public string Name { get; set; }
 
         [Display(Name="Total Quantity")]

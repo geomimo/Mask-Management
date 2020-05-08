@@ -1,0 +1,149 @@
+﻿@model MaskManagement.Models.PurchaseCreateVM
+
+@{
+    ViewData["Title"] = "Create";
+    var masks = ViewBag.Masks;
+}
+
+<h1>Add New</h1>
+
+<hr />
+
+<div class="container-lg ">
+    <form asp-action="Create">
+        <div class="form-group row flex-fill">
+
+            <div class="col-md-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PurchaseType" class="control-label"></label>
+                    <select asp-for="PurchaseType" class="form-control custom-select">
+                        <option value="1">Retail</option>
+                        <option value="2">Wholesale</option>
+                    </select>
+                    <span asp-validation-for="PurchaseType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SelectedMasks" class="control-label"></label>
+                    <table asp-for="SelectedMasks" class="table table-bordered" id="selectedMasksTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fabric Id
+                                </th>
+                                <th>
+                                    Quantity
+                                </th>
+                                <th>
+                                    Remove
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+            <div class="col-md-8 form-group">
+                <div class="form-group">
+                    <label asp-for="SelectedMasks" class="control-label"></label>
+                    <table asp-for="SelectedMasks" class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fabric Id
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Image
+                                </th>
+                                <th>
+                                    Quantity
+                                </th>
+                                <th>
+                                    Add
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var m in masks)
+                            {
+                                <tr>
+                                    <td>
+                                        @m.FabricId
+                                    </td>
+                                    <td>
+                                        @m.Description
+                                    </td>
+                                    <td>
+                                        <img src=\@m.ImagePath class="img-thumbnail" />
+                                    </td>
+                                    <td>
+                                        <div class="input-group-sm col-6">
+                                            <input class="form-control" type="number" id=@m.FabricId value="1"/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-success text-dark" onclick="addMask('@m.FabricId')">+</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+        function addMask(id) {
+
+            var q = document.getElementById(id).value;
+            var table = document.getElementById("selectedMasksTable");
+            var tr = table.insertRow(1);
+            tr = table.insertRow(1);
+            var td = document.createElement('td'); // table definition.
+
+            td1 = tr.insertCell(0);
+            td1.innerHTML = id;
+            td2 = tr.insertCell(1);
+            td2.innerHTML = q;
+            td3 = tr.insertCell(2);
+            td3.innerHTML = "<a class='btn btn-danger text-dark' onclick='removeMask(this)'><i class='fa fa-trash' aria-hidden='true'></i></a>";       
+        }
+
+        function removeMask(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

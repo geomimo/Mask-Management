@@ -8,40 +8,66 @@ using Microsoft.Extensions.Logging;
 using MaskManagement.Models;
 using MaskManagement.Contracts;
 using AutoMapper;
+using MaskManagement.Data;
 
 namespace MaskManagement.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IPurchaseRepository _repo;
+        private readonly IPurchaseRepository _prepo;
+        private readonly IMaskRepository _mrepo;
         private readonly IMapper _mapper;
 
 
-        public HomeController(ILogger<HomeController> logger, IPurchaseRepository repo, IMapper mapper)
+        public HomeController(ILogger<HomeController> logger, IPurchaseRepository prepo, IMaskRepository mrepo, IMapper mapper)
         {
             _logger = logger;
-            _repo = repo;
+            _prepo = prepo;
+            _mrepo = mrepo;
             _mapper = mapper;
         }
 
+        // GET: Home
         public IActionResult Index()
         {
-            var purchases = _repo.FindAll().ToList();
+            var purchases = _prepo.FindAll().ToList();
             var model = _mapper.Map<List<PurchaseDetailsVM>>(purchases);
             return View(model);
         }
 
+        // GET: Home/Create
         public IActionResult Create()
         {
+            List<Mask> masks = _mrepo.FindAll().ToList();
+            List<MaskVM> model = _mapper.Map<List<MaskVM>>(masks);
+            ViewBag.Masks = model;
             return View();
         }
 
-       
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        // POST: Home/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(PurchaseCreateVM purchase)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (ModelState.IsValid)
+            {
+
+                Purchase newPurchase = _mapper.Map<Purchase>(purchase);
+
+                _prepo.Create(newPurchase);
+
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Details(int id)
+        {
+            var purchase = _prepo.FindById(id);
+            var model = _mapper.Map<PurchaseDetailsVM>(purchase);
+
+            return View();
         }
     }
 }

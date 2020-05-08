@@ -51,8 +51,6 @@ namespace MaskManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(MaskVM mask)
         {
-
-            //TODO: Create a service for upload
             if (ModelState.IsValid)
             {
                 if (mask.Image != null)

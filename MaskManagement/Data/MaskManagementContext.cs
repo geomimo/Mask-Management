@@ -14,6 +14,7 @@ namespace MaskManagement.Data
                 
         }
 
+
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Mask> Masks { get; set; }
         public DbSet<Purchase> Purchases { get; set; }

@@ -418,3 +418,4 @@ C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\Razor\Views\Masks\Edit.cshtml.g.cs
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\MaskManagement.csprojAssemblyReference.cache
+C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\Razor\Views\Home\Create.cshtml.g.cs

@@ -63,7 +63,7 @@ namespace MaskManagement.Migrations
 
             modelBuilder.Entity("MaskManagement.Data.Purchase", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PurchaseId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -77,7 +77,7 @@ namespace MaskManagement.Migrations
                     b.Property<int>("PurchaseType")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("PurchaseId");
 
                     b.HasIndex("CustomerId");
 
@@ -86,25 +86,18 @@ namespace MaskManagement.Migrations
 
             modelBuilder.Entity("MaskManagement.Data.PurchasedMasks", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("MaskId")
+                    b.Property<int>("PurchasedMasksId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PurchaseId")
+                    b.Property<int?>("MaskId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("PurchasedMasksId");
 
                     b.HasIndex("MaskId");
-
-                    b.HasIndex("PurchaseId");
 
                     b.ToTable("PurchasedMasks");
                 });
@@ -124,7 +117,9 @@ namespace MaskManagement.Migrations
 
                     b.HasOne("MaskManagement.Data.Purchase", null)
                         .WithMany("Masks")
-                        .HasForeignKey("PurchaseId");
+                        .HasForeignKey("PurchasedMasksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
