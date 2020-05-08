@@ -8,6 +8,7 @@ using AutoMapper;
 using MaskManagement.Contracts;
 using MaskManagement.Data;
 using MaskManagement.Models;
+using MaskManagement.Utility;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -56,7 +57,7 @@ namespace MaskManagement.Controllers
             {
                 if (mask.Image != null)
                 {
-                    mask.ImagePath = UploadImage(mask.Image);
+                    mask.ImagePath = Uploader.UploadImage(mask.Image, Path.Combine(_hostingEnvironment.WebRootPath, "img"));
                 }
 
                 Mask newMask = _mapper.Map<Mask>(mask);
@@ -87,7 +88,8 @@ namespace MaskManagement.Controllers
                 {
                     if (mask.Image != null)
                     {
-                        mask.ImagePath = UploadImage(mask.Image);
+                        mask.ImagePath = Uploader.UploadImage(mask.Image, Path.Combine(_hostingEnvironment.WebRootPath, "img"));
+                        
                     }
 
                     Mask newMask = _mapper.Map<Mask>(mask);
@@ -127,22 +129,6 @@ namespace MaskManagement.Controllers
             {
                 return View();
             }
-        }
-
-        public ActionResult Details(int id)
-        {
-            var mask = _repo.FindById(id);
-            var model = _mapper.Map<MaskVM>(mask);
-            return View(model);
-        }
-
-        private string UploadImage(IFormFile file) 
-        {
-            string uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "img");
-            string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            string filePath = Path.Combine(uploadFolder, uniqueFileName);
-            file.CopyTo(new FileStream(filePath, FileMode.Create));
-            return Path.Combine("img", uniqueFileName);
         }
 
     }
