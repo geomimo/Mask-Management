@@ -85,12 +85,24 @@ namespace MaskManagement.Controllers
             return RedirectToAction(nameof(Create));
         }
 
+
+        // GET: Home/Details/5
         public IActionResult Details(int id)
         {
             var purchase = _prepo.FindById(id);
             var model = _mapper.Map<PurchaseDetailsVM>(purchase);
 
+            return View(model);
+        }
+
+        // GET: Home/Edit/5
+        public IActionResult Edit(int id)
+        {
+           
             return View();
         }
+
+        //POST: Home/Edit/
+        
     }
 }

@@ -24,6 +24,8 @@ namespace MaskManagement.Models
         public float TotalPrice { get; set; }
         public DateTime Date { get; set; }
 
+        public List<PurchasedMasks> Masks { get; set; }
+
     }
 
 

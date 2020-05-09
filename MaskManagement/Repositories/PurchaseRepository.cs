@@ -31,13 +31,17 @@ namespace MaskManagement.Repositories
 
         public ICollection<Purchase> FindAll()
         {
-            var purchases = _db.Purchases.Include(p => p.Masks).ToList();
+            var purchases = _db.Purchases.Include(p => p.Masks)
+                                         .ThenInclude(pm => pm.Mask)
+                                         .ToList();
             return purchases;
         }
 
         public Purchase FindById(int id)
         {
-            Purchase purchase = _db.Purchases.Include(p => p.Masks).FirstOrDefault(p => p.PurchaseId == id);
+            Purchase purchase = _db.Purchases.Include(p => p.Masks)
+                                             .ThenInclude(pm => pm.Mask)
+                                             .FirstOrDefault(p => p.PurchaseId == id);
             return purchase;
         }
 
