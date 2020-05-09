@@ -9,6 +9,9 @@ using MaskManagement.Models;
 using MaskManagement.Contracts;
 using AutoMapper;
 using MaskManagement.Data;
+using Microsoft.AspNetCore.Http;
+using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace MaskManagement.Controllers
 {
@@ -48,17 +51,38 @@ namespace MaskManagement.Controllers
         // POST: Home/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(PurchaseCreateVM purchase)
+        public IActionResult Create(PurchaseCreateVM purchase, IFormCollection form)
         {
             if (ModelState.IsValid)
-            {
+            {             
                 Purchase newPurchase = _mapper.Map<Purchase>(purchase);
+                newPurchase.Masks = new List<PurchasedMasks>();
+
+                var data = form["selectedMasks"];
+                var values = JsonConvert.DeserializeObject<Dictionary<string,string>>(data);
+
+                foreach (var key in values.Keys)
+                {
+                    if (key.Equals(String.Empty)) continue;
+                    Mask mask = _mrepo.FindByFabricId(key);
+                    _mrepo.Save();
+                    int quantity = Int32.Parse(values[key]);
+
+                    newPurchase.Masks.Add(new PurchasedMasks
+                    {
+                        Mask = mask,
+                        Quantity = quantity,
+                        Purchase = newPurchase
+                        
+                    });
+                }
 
                 _prepo.Create(newPurchase);
 
             }
-
-            return RedirectToAction(nameof(Index));
+            
+            //return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Create));
         }
 
         public IActionResult Details(int id)

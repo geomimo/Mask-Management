@@ -1,5 +1,6 @@
 ﻿using MaskManagement.Contracts;
 using MaskManagement.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,13 +31,13 @@ namespace MaskManagement.Repositories
 
         public ICollection<Purchase> FindAll()
         {
-            var purchases = _db.Purchases.ToList();
+            var purchases = _db.Purchases.Include(p => p.Masks).ToList();
             return purchases;
         }
 
         public Purchase FindById(int id)
         {
-            Purchase purchase = _db.Purchases.Find(id);
+            Purchase purchase = _db.Purchases.Include(p => p.Masks).FirstOrDefault(p => p.PurchaseId == id);
             return purchase;
         }
 

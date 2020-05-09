@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
-    var masks = ViewBag.Masks;
+    List<MaskManagement.Models.MaskVM> masks = ViewBag.Masks;
 }
 
 <h1>Add New</h1>
@@ -31,6 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="SelectedMasks" class="control-label"></label>
+                    <input type="hidden" name="selectedMasks" id="selectedMasks" />
                     <table asp-for="SelectedMasks" class="table table-bordered" id="selectedMasksTable">
                         <thead>
                             <tr>
@@ -56,7 +57,7 @@
                 </div>
                 <br />
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Create" class="btn btn-primary" onclick="loadData()" />
                 </div>
             </div>
             <div class="col-md-8 form-group">
@@ -138,6 +139,27 @@
         function removeMask(btn) {
             var row = btn.parentNode.parentNode;
             row.parentNode.removeChild(row);
+        }
+
+        function loadData() {
+            var table = document.getElementById("selectedMasksTable");
+            var hidden = document.getElementById("selectedMasks");
+           
+            var obj = {};            
+            for (i = 1; i < table.rows.length; i++) {
+                
+                var oCells = table.rows.item(i).cells;
+                if (oCells.item(0) != null) {
+                    let maskId = oCells.item(0).innerHTML;
+                    let q = oCells.item(1).innerHTML;
+                    obj[maskId] = q;
+                }
+                
+                                
+            }
+
+            var data = JSON.stringify(obj);
+            hidden.value = data;
         }
     </script>
 

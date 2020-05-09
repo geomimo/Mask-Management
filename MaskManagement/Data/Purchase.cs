@@ -19,7 +19,6 @@ namespace MaskManagement.Data
         public PurchaseType PurchaseType { get; set; }
 
 
-        [ForeignKey("PurchasedMasksId")]
         public List<PurchasedMasks> Masks { get; set; }
 
         /*

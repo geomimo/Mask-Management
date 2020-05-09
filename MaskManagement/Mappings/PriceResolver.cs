@@ -15,10 +15,10 @@ namespace MaskManagement.Mappings
             float? price = null;
             switch (source.PurchaseType)
             {
-                case PurchaseType.RETAIL:
+                case PurchaseType.Retail:
                     price = TypePrice.Retail;
                     break;
-                case PurchaseType.WHOLESALE:
+                case PurchaseType.Wholesale:
                     price = TypePrice.Wholesale;
                     break;
             }

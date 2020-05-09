@@ -8,5 +8,6 @@ namespace MaskManagement.Contracts
 {
     public interface IMaskRepository : IRepositoryBase<Mask>
     {
+        public Mask FindByFabricId(string fabricId);
     }
 }

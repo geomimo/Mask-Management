@@ -42,7 +42,7 @@ namespace MaskManagement.Migrations
 
             modelBuilder.Entity("MaskManagement.Data.Mask", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("MaskId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -56,7 +56,7 @@ namespace MaskManagement.Migrations
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("MaskId");
 
                     b.ToTable("Masks");
                 });
@@ -85,9 +85,14 @@ namespace MaskManagement.Migrations
             modelBuilder.Entity("MaskManagement.Data.PurchasedMasks", b =>
                 {
                     b.Property<int>("PurchasedMasksId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("MaskId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PurchaseId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -96,6 +101,8 @@ namespace MaskManagement.Migrations
                     b.HasKey("PurchasedMasksId");
 
                     b.HasIndex("MaskId");
+
+                    b.HasIndex("PurchaseId");
 
                     b.ToTable("PurchasedMasks");
                 });
@@ -106,9 +113,9 @@ namespace MaskManagement.Migrations
                         .WithMany()
                         .HasForeignKey("MaskId");
 
-                    b.HasOne("MaskManagement.Data.Purchase", null)
+                    b.HasOne("MaskManagement.Data.Purchase", "Purchase")
                         .WithMany("Masks")
-                        .HasForeignKey("PurchasedMasksId")
+                        .HasForeignKey("PurchaseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

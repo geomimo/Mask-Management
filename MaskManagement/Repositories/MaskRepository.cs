@@ -40,6 +40,12 @@ namespace MaskManagement.Repositories
             return mask;
         }
 
+        public Mask FindByFabricId(string fabricId)
+        {
+            Mask mask = _db.Masks.ToList().Where(m => m.FabricId == fabricId).FirstOrDefault();
+            return mask;
+        }
+
         public bool Save()
         {
             return _db.SaveChanges() > 0;

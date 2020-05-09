@@ -23,6 +23,22 @@
     <Compile Remove="Migrations\20200508144259_test.Designer.cs" />
     <Compile Remove="Migrations\20200508144441_test.cs" />
     <Compile Remove="Migrations\20200508144441_test.Designer.cs" />
+    <Compile Remove="Migrations\20200509083807_test.cs" />
+    <Compile Remove="Migrations\20200509083807_test.Designer.cs" />
+    <Compile Remove="Migrations\20200509083855_FixedPuchasedMaskRelationship.cs" />
+    <Compile Remove="Migrations\20200509083855_FixedPuchasedMaskRelationship.Designer.cs" />
+    <Compile Remove="Migrations\20200509084155_FixedPuchasedMaskRelationship.cs" />
+    <Compile Remove="Migrations\20200509084155_FixedPuchasedMaskRelationship.Designer.cs" />
+    <Compile Remove="Migrations\20200509090119_test.cs" />
+    <Compile Remove="Migrations\20200509090119_test.Designer.cs" />
+    <Compile Remove="Migrations\20200509090258_test.cs" />
+    <Compile Remove="Migrations\20200509090258_test.Designer.cs" />
+    <Compile Remove="Migrations\20200509090348_RemovedNamePurchase.cs" />
+    <Compile Remove="Migrations\20200509090348_RemovedNamePurchase.Designer.cs" />
+    <Compile Remove="Migrations\20200509090453_AddNamePurchase.cs" />
+    <Compile Remove="Migrations\20200509090453_AddNamePurchase.Designer.cs" />
+    <Compile Remove="Migrations\20200509091731_Initial.cs" />
+    <Compile Remove="Migrations\20200509091731_Initial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +53,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="xunit" Version="2.4.1" />
   </ItemGroup>
 

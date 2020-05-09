@@ -7,7 +7,7 @@ namespace MaskManagement.Data
 {
     public enum PurchaseType
     {
-        RETAIL,
-        WHOLESALE
+        Retail,
+        Wholesale
     }
 }

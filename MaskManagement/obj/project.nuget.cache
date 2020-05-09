@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "H2DTPwkRF5sjGFIEN8paAoPs6O//GWdEqlaxuKjlwCl+qJDfu8QQGR7nhmylOBTp7v2ymWeFK2LWt8VEv+kUxQ==",
+  "dgSpecHash": "bKPsk2YbYX7NhCsY+MbEi19sdg2SsREdyGQ4/yeO5INNuNFuenkCdo16POoeRybruTRV/SOIg+qMT7py9MY5EQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\GeoMimo\\source\\repos\\MaskManagement\\MaskManagement\\MaskManagement.csproj",
   "expectedPackageFiles": [
@@ -55,7 +55,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\GeoMimo\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\GeoMimo\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
