@@ -24,6 +24,7 @@ namespace MaskManagement.Models
         public float TotalPrice { get; set; }
         public DateTime Date { get; set; }
 
+        [Display(Name = "Selected Masks")]
         public List<PurchasedMasks> Masks { get; set; }
 
     }
@@ -37,7 +38,7 @@ namespace MaskManagement.Models
         [Display(Name = "Purchase Type")]
         public PurchaseType PurchaseType { get; set; }
        
-        [Display(Name = "Masks")]
+        [Display(Name = "Selected Masks")]
         public ICollection<PurchasedMasks> SelectedMasks { get; set; }
 
     }

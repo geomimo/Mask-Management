@@ -424,3 +424,5 @@ C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\MaskManagement.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\MaskManagement.csprojAssemblyReference.cache
 C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs
+C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\Razor\Views\Home\Edit.cshtml.g.cs
+C:\Users\GeoMimo\source\repos\MaskManagement\MaskManagement\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_MasksTable.cshtml.g.cs

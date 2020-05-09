@@ -1,0 +1,85 @@
+﻿@model MaskManagement.Models.PurchaseDetailsVM
+
+@{
+    ViewData["Title"] = "Edit";
+    List<MaskManagement.Models.MaskVM> allMasks = ViewBag.AllMasks;
+    await Html.PartialAsync("_MasksTable", allMasks);
+
+}
+
+<h1>Edit</h1>
+
+<hr />
+<div class="container-lg">
+    <form asp-action="Edit">
+        <div class="form-group row flex-fill">
+            <div class="col-md-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PurchaseType" class="control-label"></label>
+                    <input asp-for="PurchaseType" class="form-control" />
+                    <span asp-validation-for="PurchaseType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Masks" class="control-label"></label>
+                    <input type="hidden" name="SelectedMasks" id="SelectedMasks" />
+                    <table asp-for="Masks" class="table table-bordered" id="selectedMasksTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fabric Id
+                                </th>
+                                <th>
+                                    Quantity
+                                </th>
+                                <th>
+                                    Remove
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var purchasedMasks in Model.Masks)
+                            {
+                                <tr>
+                                    <td>
+                                        @purchasedMasks.Mask.FabricId
+                                    </td>
+                                    <td>
+                                        @purchasedMasks.Quantity
+                                    </td>
+                                    <td>
+                                        <a class='btn btn-danger text-dark' onclick='removeMask(this)'>
+                                            <i class='fa fa-trash' aria-hidden='true'></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+            <div class="col-md-8 form-group">
+                <div class="form-group">
+                    <partial name="_MasksTable" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

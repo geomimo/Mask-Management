@@ -98,11 +98,19 @@ namespace MaskManagement.Controllers
         // GET: Home/Edit/5
         public IActionResult Edit(int id)
         {
-           
-            return View();
+
+            List<Mask> masks = _mrepo.FindAll().ToList();
+            List<MaskVM> AllMasks = _mapper.Map<List<MaskVM>>(masks);
+            ViewBag.AllMasks = AllMasks;
+
+            var purchase = _prepo.FindById(id);
+            var model = _mapper.Map<PurchaseDetailsVM>(purchase);
+
+            return View(model);
         }
 
         //POST: Home/Edit/
+
         
     }
 }

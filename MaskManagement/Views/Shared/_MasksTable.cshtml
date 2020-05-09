@@ -1,0 +1,48 @@
+﻿@model List<MaskVM>
+
+<label class="control-label">Choose masks</label>
+<table asp-for="SelectedMasks" class="table">
+    <thead>
+        <tr>
+            <th>
+                Fabric Id
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Add
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>
+                    @m.FabricId
+                </td>
+                <td>
+                    @m.Description
+                </td>
+                <td>
+                    <img src=\@m.ImagePath class="img-thumbnail" />
+                </td>
+                <td>
+                    <div class="input-group-sm col-6">
+                        <input class="form-control" type="number" id=@m.FabricId value="1" />
+                    </div>
+                </td>
+                <td>
+                    <a class="btn btn-success text-dark" onclick="addMask('@m.FabricId')">+</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

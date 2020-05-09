@@ -2,7 +2,8 @@
 
 @{
     ViewData["Title"] = "Create";
-    List<MaskManagement.Models.MaskVM> masks = ViewBag.Masks;
+    List<MaskManagement.Models.MaskVM> allMasks = ViewBag.Masks;
+    await Html.PartialAsync("_MasksTable", allMasks);
 }
 
 <h1>Add New</h1>
@@ -20,7 +21,7 @@
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
-        
+
                 <div class="form-group">
                     <label asp-for="PurchaseType" class="control-label"></label>
                     <select asp-for="PurchaseType" class="form-control custom-select">
@@ -62,52 +63,7 @@
             </div>
             <div class="col-md-8 form-group">
                 <div class="form-group">
-                    <label asp-for="SelectedMasks" class="control-label"></label>
-                    <table asp-for="SelectedMasks" class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Fabric Id
-                                </th>
-                                <th>
-                                    Description
-                                </th>
-                                <th>
-                                    Image
-                                </th>
-                                <th>
-                                    Quantity
-                                </th>
-                                <th>
-                                    Add
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var m in masks)
-                            {
-                                <tr>
-                                    <td>
-                                        @m.FabricId
-                                    </td>
-                                    <td>
-                                        @m.Description
-                                    </td>
-                                    <td>
-                                        <img src=\@m.ImagePath class="img-thumbnail" />
-                                    </td>
-                                    <td>
-                                        <div class="input-group-sm col-6">
-                                            <input class="form-control" type="number" id=@m.FabricId value="1"/>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-success text-dark" onclick="addMask('@m.FabricId')">+</a>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                    <partial name="_MasksTable" />
                 </div>
             </div>
         </div>
@@ -133,7 +89,7 @@
             td2 = tr.insertCell(1);
             td2.innerHTML = q;
             td3 = tr.insertCell(2);
-            td3.innerHTML = "<a class='btn btn-danger text-dark' onclick='removeMask(this)'><i class='fa fa-trash' aria-hidden='true'></i></a>";       
+            td3.innerHTML = "<a class='btn btn-danger text-dark' onclick='removeMask(this)'><i class='fa fa-trash' aria-hidden='true'></i></a>";
         }
 
         function removeMask(btn) {
@@ -144,18 +100,18 @@
         function loadData() {
             var table = document.getElementById("selectedMasksTable");
             var hidden = document.getElementById("selectedMasks");
-           
-            var obj = {};            
+
+            var obj = {};
             for (i = 1; i < table.rows.length; i++) {
-                
+
                 var oCells = table.rows.item(i).cells;
                 if (oCells.item(0) != null) {
                     let maskId = oCells.item(0).innerHTML;
                     let q = oCells.item(1).innerHTML;
                     obj[maskId] = q;
                 }
-                
-                                
+
+
             }
 
             var data = JSON.stringify(obj);
