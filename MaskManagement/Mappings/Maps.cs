@@ -20,8 +20,9 @@ namespace MaskManagement.Mappings
             CreateMap<Purchase, PurchaseDetailsVM>().ReverseMap();
             //CreateMap<PurchasedMasks, PurchasedMasksVM>().ReverseMap();
 
-            CreateMap<Purchase, PurchaseDetailsVM>().ForMember(dest => dest.TotalPrice, opt => opt.MapFrom<PriceResolver>());
-            CreateMap<Purchase, PurchaseDetailsVM>().ForMember(dest => dest.TotalQuantity, opt => opt.MapFrom<QuantityResoler>());
+            CreateMap<Purchase, PurchaseDetailsVM>().ForMember(dest => dest.TotalPrice, opt => opt.MapFrom<PriceResolver>())
+                                                    .ForMember(dest => dest.TotalQuantity, opt => opt.MapFrom<QuantityResoler>());
+
 
         }
     }

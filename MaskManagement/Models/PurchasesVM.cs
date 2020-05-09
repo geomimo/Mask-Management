@@ -20,6 +20,7 @@ namespace MaskManagement.Models
         public PurchaseType PurchaseType { get; set; }
 
         [Display(Name = "Total Price")]
+        [DisplayFormat(DataFormatString = "{0:n} €")]
         public float TotalPrice { get; set; }
         public DateTime Date { get; set; }
 
