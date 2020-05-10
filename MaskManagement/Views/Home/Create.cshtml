@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Create";
     List<MaskManagement.Models.MaskVM> allMasks = ViewBag.Masks;
-    await Html.PartialAsync("_MasksTable", allMasks);
 }
 
 <h1>Add New</h1>
@@ -63,7 +62,7 @@
             </div>
             <div class="col-md-8 form-group">
                 <div class="form-group">
-                    <partial name="_MasksTable" />
+                    @await Html.PartialAsync("_MasksTable", allMasks); 
                 </div>
             </div>
         </div>
