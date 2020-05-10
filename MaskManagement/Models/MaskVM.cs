@@ -9,12 +9,14 @@ namespace MaskManagement.Models
 {
     public class MaskVM
     {
-        public int Id { get; set; }
+        public int MaskId { get; set; }
 
         [Display(Name = "Fabric ID")]
         public string FabricId { get; set; }
+
         [Display(Name = "Image of Fabric")]
         public IFormFile Image { get; set; }
+
 
         [Display(Name = "Image of Fabric")]
         public string ImagePath { get; set; }

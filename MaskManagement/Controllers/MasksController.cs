@@ -46,7 +46,7 @@ namespace MaskManagement.Controllers
             return View();
         }
 
-        // POST: Masks/Create
+        // POST: Masks/Create/
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(MaskVM mask)
