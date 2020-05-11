@@ -110,9 +110,10 @@ namespace MaskManagement.Controllers
         }
 
         //POST: Home/Edit/5
+        [HttpPost]
         public IActionResult Edit(int id, IFormCollection form)
         {
-
+            return View();
         }
 
         

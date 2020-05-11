@@ -37,10 +37,10 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Fabric Id
+                                    @Html.DisplayNameFor(model => model.SelectedMasks[0].Mask.FabricId)
                                 </th>
                                 <th>
-                                    Quantity
+                                    @Html.DisplayNameFor(model => model.SelectedMasks[0].Quantity)
                                 </th>
                                 <th>
                                     Remove
@@ -76,7 +76,9 @@
     </a>
 </div>
 
-@section Scripts {
 
+@section Scripts {
+    <script type="text/javascript" src="~/js/MasksTable.js"></script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
 }

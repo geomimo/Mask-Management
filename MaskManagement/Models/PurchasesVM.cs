@@ -39,7 +39,7 @@ namespace MaskManagement.Models
         public PurchaseType PurchaseType { get; set; }
        
         [Display(Name = "Selected Masks")]
-        public ICollection<PurchasedMasks> SelectedMasks { get; set; }
+        public List<PurchasedMasks> SelectedMasks { get; set; }
 
     }
 
