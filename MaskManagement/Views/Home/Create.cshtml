@@ -1,4 +1,5 @@
-﻿@model MaskManagement.Models.PurchaseCreateVM
+﻿<!--Home-->
+@model MaskManagement.Models.PurchaseCreateVM
 
 @{
     ViewData["Title"] = "Create";
@@ -62,7 +63,7 @@
             </div>
             <div class="col-md-8 form-group">
                 <div class="form-group">
-                    @await Html.PartialAsync("_MasksTable", allMasks); 
+                    @await Html.PartialAsync("_MasksTable", allMasks)
                 </div>
             </div>
         </div>
@@ -76,49 +77,6 @@
 </div>
 
 @section Scripts {
-    <script>
-        function addMask(id) {
-
-            var q = document.getElementById(id).value;
-            var table = document.getElementById("selectedMasksTable");
-            var tr = table.insertRow(1);
-            tr = table.insertRow(1);
-            var td = document.createElement('td'); // table definition.
-
-            td1 = tr.insertCell(0);
-            td1.innerHTML = id;
-            td2 = tr.insertCell(1);
-            td2.innerHTML = q;
-            td3 = tr.insertCell(2);
-            td3.innerHTML = "<a class='btn btn-danger text-dark' onclick='removeMask(this)'><i class='fa fa-trash' aria-hidden='true'></i></a>";
-        }
-
-        function removeMask(btn) {
-            var row = btn.parentNode.parentNode;
-            row.parentNode.removeChild(row);
-        }
-
-        function loadData() {
-            var table = document.getElementById("selectedMasksTable");
-            var hidden = document.getElementById("selectedMasks");
-
-            var obj = {};
-            for (i = 1; i < table.rows.length; i++) {
-
-                var oCells = table.rows.item(i).cells;
-                if (oCells.item(0) != null) {
-                    let maskId = oCells.item(0).innerHTML;
-                    let q = oCells.item(1).innerHTML;
-                    obj[maskId] = q;
-                }
-
-
-            }
-
-            var data = JSON.stringify(obj);
-            hidden.value = data;
-        }
-    </script>
 
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

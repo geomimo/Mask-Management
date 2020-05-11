@@ -109,7 +109,11 @@ namespace MaskManagement.Controllers
             return View(model);
         }
 
-        //POST: Home/Edit/
+        //POST: Home/Edit/5
+        public IActionResult Edit(int id, IFormCollection form)
+        {
+
+        }
 
         
     }
